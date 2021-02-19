@@ -6,24 +6,24 @@ public class Main {
 	// write your code here
 
         //remove LinkedList
-//        LinkList<Integer> list = getLinkList();
-//        removeElements(list.head,6);
-//        list.printList();
+        LinkList<Integer> list = getLinkList();
+        removeElements(list.head,6);
+        list.printList();
 
         //swap nodes
-//        LinkList<Integer> list = getLinkList();
-//        swapNodes(list.head, 2);
-//        list.printList();
+        LinkList<Integer> list4 = getLinkList();
+        swapNodes(list.head, 2);
+        list.printList();
 
         //merge in between
-//        LinkList<Integer> list1 = getNode1();
-//        LinkList<Integer> list2 = getNode2();
-//        Node<Integer> result = mergeInBetween(list1.head,list2.head,3,4);
+        LinkList<Integer> list1 = getNode1();
+        LinkList<Integer> list2 = getNode2();
+        Node<Integer> result = mergeInBetween(list1.head,list2.head,3,4);
 
         //delete N nodes after m nodes of a linked list
-//        LinkList<Integer> list = getLinkList();
-//        Node<Integer> result = deleteNodes (list.head, 2,1);
-//        printList(result);
+        LinkList<Integer> list5 = getLinkList();
+        Node<Integer> result1 = deleteNodes (list.head, 2,1);
+        printList(result);
 
         DoubleLinkList<Integer> doubleByHead = getDoubleList2();
         DoubleLinkList<Integer> doubleByTail = getDoubleList1();
