@@ -104,39 +104,39 @@ public class Main {
 
         HashSet<String> start = new HashSet<>();
         HashSet<String> end = new HashSet<>();
-        HashSet<String> dic = new HashSet<>(wordList);
+        HashSet<String> wordSet = new HashSet<>(wordList);
         start.add(beginWord);
         end.add(endWord);
         int step=1;
-        if (!dic.contains(endWord)) return 0;
+        if (!wordSet.contains(endWord)) return 0;
         while(!start.isEmpty()){
             step++;
-            HashSet<String> tmpSet=new HashSet<>();
-            dic.removeAll(start);
+            HashSet<String> set=new HashSet<>();
+            wordSet.removeAll(start);
             for(String s:start){
                 char[] arr=s.toCharArray();
                 for(int i=0;i<arr.length;i++){
-                    char tmp=arr[i];
+                    char ch=arr[i];
                     for(char c='a';c<='z';c++){
-                        if(tmp==c) continue;
+                        if(ch==c) continue;
                         arr[i]=c;
-                        String strTmp=new String(arr);
-                        if(dic.contains(strTmp)){
-                            if(end.contains(strTmp)){
+                        String str=new String(arr);
+                        if(wordSet.contains(str)){
+                            if(end.contains(str)){
                                 return step;
                             }else{
-                                tmpSet.add(strTmp);
+                                set.add(str);
                             }
                         }
                     }
-                    arr[i]=tmp;
+                    arr[i]=ch;
                 }
             }
-            if(tmpSet.size()<end.size()){
-                start=tmpSet;
+            if(set.size()<end.size()){
+                start=set;
             }else{
                 start=end;
-                end=tmpSet;
+                end=set;
             }
 
         }
