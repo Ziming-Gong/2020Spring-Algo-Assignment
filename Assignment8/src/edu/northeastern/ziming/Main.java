@@ -18,30 +18,26 @@ public class Main {
 //        System.out.println("the students could finish their courses:" +canFinished(number,pre));
 
         //Word Ladder
-        List<String> wordList = new ArrayList<>();
-        wordList.add("hot");
-        wordList.add("dot");
-        wordList.add("dog");
-        wordList.add("lot");
-        wordList.add("log");
-        wordList.add("cog");
-        ladderLength("hit", "cog", wordList);
-        System.out.println(ladderLength("hit", "cog", wordList));
+//        List<String> wordList = new ArrayList<>();
+//        wordList.add("hot");
+//        wordList.add("dot");
+//        wordList.add("dog");
+//        wordList.add("lot");
+//        wordList.add("log");
+//        wordList.add("cog");
+//        ladderLength("hit", "cog", wordList);
+//        System.out.println(ladderLength("hit", "cog", wordList));
 
 
         //island
-        //Hi Ta
-        //I don't know why the result is not correct
-        //but I have submitted in LeetCode successfully
-        //I guess the reason of that is the difference of "grid"
-        //Could you please comment on Canvas? Thank you
-        char[][] grid = {{1,1,0,0,0},
-                         {1,1,0,0,0},
-                         {0,0,1,0,0},
-                         {0,0,0,1,1}};
-        numIslands(grid);
 
-        System.out.println(numIslands(grid));
+        char [][] grid = {{'1','1','0','0','0'},
+                         {'1','1','0','0','0'},
+                         {'0','0','1','0','0'},
+                         {'0','0','0','1','1'}};
+
+
+        System.out.println(numOfIsland(grid));
 
 
 
@@ -148,33 +144,38 @@ public class Main {
     }
 
     //Island
-    public static int numIslands(char[][] grid) {
+    public static int numOfIsland(char[][] grid){
         int count = 0;
-        for(int i = 0; i < grid.length; i++) {
-            for(int j = 0; j < grid[0].length; j++) {
-                if(grid[i][j] == '1'){
-                    bfs(grid, i, j);
+
+        int row = grid.length;
+        int col = grid[0].length;
+        for(int i = 0; i < row; i ++){
+            for (int j = 0 ; j < col; j ++){
+                if( grid[i][j] == '1'){
+                    dfs(i, j , grid);
                     count++;
                 }
             }
         }
         return count;
     }
-    private  static void bfs(char[][] grid, int i, int j){
-        Queue<int[]> list = new LinkedList<>();
-        list.add(new int[] { i, j });
-        while(!list.isEmpty()){
-            int[] currentNode = list.remove();
-            i = currentNode[0]; j = currentNode[1];
-            if(0 <= i && i < grid.length && 0 <= j && j < grid[0].length && grid[i][j] == '1') {
-                grid[i][j] = '0';
-                list.add(new int[] { i + 1, j });
-                list.add(new int[] { i - 1, j });
-                list.add(new int[] { i, j + 1 });
-                list.add(new int[] { i, j - 1 });
-            }
+    public static void dfs(int i, int j , char[][] grid){
+        if(i < 0 || j < 0 || i >= grid.length || j >= grid[0].length){
+            return;
         }
+        if( grid[i][j] == '0' || grid[i][j] == '3'){
+            return;
+        }
+
+        grid[i][j] = '3';
+
+        dfs(i +1, j , grid);
+        dfs(i -1, j , grid);
+        dfs(i, j+1, grid);
+        dfs(i, j-1, grid);
+
     }
+
 
 
 
